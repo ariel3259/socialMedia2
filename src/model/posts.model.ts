@@ -10,7 +10,7 @@ import {
 import Comments from './comments.model';
 import Users from './users.model';
 
-@Table({ modelName: 'posts' })
+@Table({ underscored: true })
 export default class Posts extends Model {
   @Column({ primaryKey: true, autoIncrement: true })
   postsId: number;
@@ -19,12 +19,13 @@ export default class Posts extends Model {
   title: string;
 
   @Column({ type: DataType.STRING(100) })
-  image: string;
+  image?: string;
 
   @BelongsTo(() => Users)
   user: Users;
 
   @ForeignKey(() => Users)
+  @Column
   usersId: number;
 
   @HasMany(() => Comments, { foreignKey: 'postsId' })

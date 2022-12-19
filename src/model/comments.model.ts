@@ -8,7 +8,7 @@ import {
 import Posts from './posts.model';
 import Users from './users.model';
 
-@Table({ modelName: 'comments' })
+@Table({ underscored: true })
 export default class Comments extends Model {
   @Column({ primaryKey: true, autoIncrement: true })
   commentsId: number;
@@ -34,6 +34,6 @@ export default class Comments extends Model {
   @Column
   createdAt: Date;
 
-  @Column
+  @Column({ defaultValue: new Date() })
   updatedAt: Date;
 }

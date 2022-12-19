@@ -2,7 +2,7 @@ import { Model, Table, Column, DataType, HasMany } from 'sequelize-typescript';
 import Comments from './comments.model';
 import Posts from './posts.model';
 
-@Table({ modelName: 'users' })
+@Table({ underscored: true })
 export default class Users extends Model {
   @Column({ primaryKey: true, autoIncrement: true })
   usersId: number;
@@ -12,6 +12,9 @@ export default class Users extends Model {
 
   @Column({ type: DataType.STRING(50) })
   lastname: string;
+
+  @Column
+  cellPhone: number;
 
   @Column({ type: DataType.STRING(150) })
   email: string;
